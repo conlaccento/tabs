@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  color-scheme: light;
+  --c-white: #fff;
+  --c-black: #000;
+  --c-light: #eee;
+  --c-dark: #111;
+  --c-outline: #d3d3dc;
+  --c-surface-hover: #f6f6fa;
+  --c-outline-hover: #c4c5cf;
+  --c-surface-active: #f1f1f7;
+  --c-neutral: #f1f1f7;
+  --c-positive: #b1ffc7;
+  --c-negative: #ffbfb1;
+  --c-inverse: #1b2134;
+  --c-inverse-hover: #343a4e;
+  --c-inverse-active: #585d71;
+
+  /* Spacings */
+  --space-0: 0;
+  --space-4xs: 2px;
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-s: 16px;
+  --space-m: 20px;
+  --space-l: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  --text-m: 0.9rem;
+  --text-s: 0.8rem;
+}
+
+body {
+  background-color: light-dark(var(--c-white), var(--c-dark));
+  min-height: 100vh;
+  margin: 1rem;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+[role="tablist"] {
+  min-width: 100%;
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  overflow-x: auto;
+
+  .tabs-wrapper {
+    display: flex;
+    padding: var(--space-2xs);
+  }
+}
+
+[role="tab"] {
+  flex: 0 0 auto;
+  cursor: pointer;
+  font-size: var(--text-m);
+  font-weight: 700;
+  color: var(--c-dark);
+  background-color: var(--c-white);
+  padding-inline: var(--space-xs);
+  padding-block: 0.9rem;
+  border-radius: 100px;
+  border: 1px solid var(--c-outline);
+
+  & + [role="tab"] {
+    margin-left: var(--space-2xs);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-inline: var(--space-s);
+    padding-block: 1.1rem;
+
+    & + [role="tab"] {
+      margin-left: var(--space-xs);
+    }
+  }
+
+  &:hover {
+    background-color: var(--c-surface-hover);
+    border-color: var(--c-outline-hover);
+  }
+  &:active {
+    background-color: var(--c-surface-active);
+  }
+  &:focus {
+    outline: 2px solid var(--c-black);
+    outline-offset: 2px;
+  }
+}
+
+[role="tab"][aria-selected="true"] {
+  color: var(--c-white);
+  background-color: var(--c-inverse);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--c-inverse-hover);
+  }
+  &:active {
+    background-color: var(--c-inverse-active);
+  }
+}
+
+[role="tab"].tab--variant-underline {
+  background-color: transparent;
+  color: var(--c-black);
+  padding-inline: 0;
+  border-width: 0;
+  border-radius: 2px;
+  position: relative;
+  outline-offset: 4px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    top: auto;
+    background-color: transparent;
+    height: 3px;
+    width: 100%;
+    border-radius: 3px;
+  }
+
+  &:hover::after,
+  &:active::after,
+  &:focus::after {
+    background-color: var(--c-outline-hover);
+  }
+
+  & + [role="tab"] {
+    margin-left: var(--space-l);
+
+    @media screen and (min-width: 768px) {
+      margin-left: var(--space-xl);
+    }
+  }
+
+  &[aria-selected="true"] {
+    background-color: transparent;
+
+    &::after {
+      background-color: var(--c-inverse);
+    }
+  }
+}
+
+
+[role="tabpanel"] {
+  min-height: 10em;
+  width: 100%;
+  overflow: auto;
+  padding: var(--space-2xs);
+}
+
+[role="tabpanel"].is-hidden {
+  display: none;
+}
+
+/* Badge component */
+.tab-badge {
+  font-size: var(--text-s);
+  font-weight: 700;
+  color: var(--c-dark);
+  padding-inline: var(--space-3xs);
+  padding-block: var(--space-4xs);
+  margin-left: 8px;
+  background-color: var(--c-neutral);
+  border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    padding-inline: var(--space-2xs);
+    padding-block: var(--space-3xs);
+    border-radius: 12px;
+  }
+
+}
+.tab-badge--positive {
+  background-color: var(--c-positive);
+}
+.tab-badge--negative {
+  background-color: var(--c-negative);
+}
