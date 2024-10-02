@@ -29,7 +29,7 @@ const TabList: React.FC<TabListProps> = ({
   variant
 }) => {
   return (
-    <div role="tablist" aria-labelledby={titleId} className="manual">
+    <div role="tablist" aria-labelledby={titleId}>
       <div className="tabs-wrapper">
         {tabs.map((tab, index) => (
           <Tab
